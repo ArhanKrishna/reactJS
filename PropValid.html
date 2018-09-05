@@ -1,0 +1,52 @@
+<html>
+
+<head>
+<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+<div id="root">
+</div>
+<!-- App.propTypes is used for props validation. If some of the props aren't using the correct type that we assigned, we will get a console warning -->
+<script type="text/babel">
+
+class PropValid extends React.Component{
+	render(){		
+		return(
+					<div>
+						<h2> Hello {this.props.name}</h2>
+						<h3> Number : {this.props.anyNumber}</h3>
+						<h3> String : {this.props.anyString}</h3>
+						<h3> Boolean : {this.props.anyBoolean ? "True" : "False"}</h3>
+						<h3> Array : {this.props.anyArray}</h3>
+						<h3> Function : {this.props.anyFunction(47)}</h3>
+					</div>			
+		);
+	}
+}
+
+PropValid.propTypes={
+	name : propTypes.string,
+	anyNumber : proptypes.number,
+	anyString : propTypes.string,
+	anyBoolean : propTypes.bool.isRequired,
+	anyArrray : propTypes.array.isRequired,
+	anyfunction : propTypes.func
+}
+
+PropValid.defaultProps={
+	name : 'React',
+	anyNumber : 47,
+	anyString : 'demo',
+	anyBoolean : true,
+	anyArrray : [47, 49],
+	anyfunction : function(e){ return (e+49)}
+}
+
+ReactDOM.render(<Combine />, document.getElementById("root"));
+
+</script>
+</body>
+</html>
